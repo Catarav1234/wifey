@@ -4,114 +4,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Sayu 💖</title>
+  <title>My Sayu ✨</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
       height: 100vh;
-      background: #000;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      color: #fff;
+      text-align: center;
     }
     h1 {
-      font-size: 3rem;
+      font-size: 3em;
       margin-bottom: 20px;
-      color: #ff69b4;
     }
-    p {
-      max-width: 600px;
-      text-align: center;
-      margin: 20px;
-      font-size: 1.2rem;
+    .typewriter {
+      font-size: 1.2em;
+      width: 60%;
+      max-width: 800px;
+      line-height: 1.8em;
+      white-space: pre-wrap;
+      border-right: 2px solid #fff;
+      min-height: 120px;
     }
     .countdown {
-      font-size: 2rem;
-      margin-top: 20px;
-      color: #00ffcc;
+      margin-top: 40px;
+      font-size: 1.5em;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 15px 25px;
+      border-radius: 15px;
     }
-
     .heart {
-      position: fixed;
-      width: 15px;
-      height: 15px;
-      background: red;
-      transform: rotate(45deg);
-      animation: float 10s linear infinite;
-      opacity: 0.6;
-    }
-    .heart::before, .heart::after {
-      content: '';
       position: absolute;
-      width: 15px;
-      height: 15px;
-      background: red;
-      border-radius: 50%;
-    }
-    .heart::before {
-      top: -7.5px;
-      left: 0;
-    }
-    .heart::after {
-      left: -7.5px;
-      top: 0;
+      width: 10px;
+      height: 10px;
+      background: white;
+      left: 50%;
+      animation: float 5s infinite ease-in;
     }
     @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(45deg);
-        opacity: 0;
-      }
-    }
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: transparent url('https://i.ibb.co/YpW6wzq/stars.gif') repeat top center;
-      z-index: -1;
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-1000px); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <div class="stars"></div>
-  <h1>My Sayu 💗</h1>
-  <p>
-    First of all, my darling, thank you for coming unexpectedly into my life.
-    You are the thing I didn't know I wanted but needed. You changed my life and healed me in all possible ways.
-    I'm sorry I made you sad and made you go through a breakup. Looking back now, I can't imagine doing that again.
-    My love, you mean everything to me.
-  </p>
+  <h1>My Sayu ✨</h1>
+  <div class="typewriter" id="typewriter"></div>
   <div class="countdown" id="countdown"></div>
 
   <script>
-    const targetDate = new Date("May 25, 2026 00:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
+    const text = `First of all, my darling thank you for coming unexpectedly into my life. You are the thing I didn't know I wanted but needed in my life. I don't know how I would have gone if it wasn't for you. You changed my life. You healed me, in all possible ways.
+
+I'm sorry I made you sad and made you go through a breakup. Looking back now, I can't imagine doing that again. My love, I love how you don't give up on me, I love how you smile at me, I love how you support me, I love how you are always there when I want to cry, I love how caring and loving you are.
+
+I Love You, My Baby`;
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+      }
+    }
+    typeWriter();
+
+    const targetDate = new Date("2024-06-09T00:00:00").getTime();
+    const countdown = document.getElementById("countdown");
     setInterval(() => {
       const now = new Date().getTime();
-      const distance = targetDate - now;
+      const distance = now - targetDate;
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownEl.innerHTML = `Day ${365 - days} ❤️ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
+      countdown.innerHTML = `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds Since We Fell in Love`;
     }, 1000);
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = 5 + Math.random() * 5 + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 10000);
-    }
-    setInterval(createHeart, 300);
   </script>
 </body>
 </html>
