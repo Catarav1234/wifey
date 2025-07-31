@@ -52,6 +52,19 @@
       z-index: 1;
       pointer-events: none;
     }
+    button {
+      position: absolute;
+      bottom: 30px;
+      background: #fff;
+      color: #ff69b4;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 1em;
+      z-index: 3;
+      cursor: pointer;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
@@ -148,11 +161,8 @@ I Love You, My Baby`;
     update();
   </script>
 
-  <audio autoplay loop>
-    <source src="magic.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <button onclick="document.getElementById('bgm').play()">🎵 Play Music</button>
+  <audio id="bgm" src="magic.mp3" loop></audio>
 
 </body>
 </html>
-
